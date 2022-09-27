@@ -13,6 +13,7 @@ public class UserDaoImp implements UserDao {
 
     private static final String GET_USER_BY_CAR_HQL =
             "FROM User user WHERE user.car.model=:model AND user.car.series=:series";
+    private static final String FROM_USER = "from User";
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -25,7 +26,7 @@ public class UserDaoImp implements UserDao {
     @Override
     @SuppressWarnings("unchecked")
     public List<User> listUsers() {
-        TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User");
+        TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery(FROM_USER );
         return query.getResultList();
     }
 
